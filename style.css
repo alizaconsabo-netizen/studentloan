@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #2e4d27, #1a2e15);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #fff;
+}
+
+/* ---------- CONTAINER ---------- */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+/* ---------- LOGO ---------- */
+.logo img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* ---------- TITLE ---------- */
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #f4c542;
+  line-height: 1.4;
+}
+
+/* ---------- FORM ---------- */
+.form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.form input:focus {
+  outline: 2px solid #f4c542;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  background: #f4c542;
+  color: #1a1a1a;
+}
+
+.btn:hover {
+  background: #ffda5f;
+}
+
+.btn.outline {
+  background: transparent;
+  border: 2px solid #f4c542;
+  color: #f4c542;
+  margin-top: 10px;
+}
+
+.btn.outline:hover {
+  background: #f4c542;
+  color: #1a1a1a;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #f4c542;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.name-row {
+  display: flex;
+  gap: 10px;
+}
+
+.name-row input {
+  flex: 1;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+  .container {
+    padding: 30px 25px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .name-row {
+    flex-direction: column;
+  }
+}

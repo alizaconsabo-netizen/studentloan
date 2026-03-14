@@ -1,0 +1,512 @@
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #2e4d27, #1a2e15);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-weight: 700;
+  color: #f4c542;
+  font-size: 1.2rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #f4c542;
+}
+
+.logout {
+  border: 1px solid #f4c542;
+  padding: 5px 12px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.logout:hover {
+  background: #f4c542;
+  color: #1a1a1a;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+main {
+  padding: 30px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.section {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  display: none;
+}
+
+.section.active-section {
+  display: block;
+}
+
+.section h2 {
+  color: #f4c542;
+  margin-bottom: 20px;
+}
+
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+/* Loan Section Header */
+.loan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upload-btn {
+  background-color: #f4c542;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.upload-btn:hover {
+  background-color: #ffda5f;
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background-color: #1e2b1f;
+  color: #fff;
+  margin: 8% auto;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Headings modal */
+.modal-content h4 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #f4c542;
+  font-size: 1rem;
+}
+
+.modal-content .h4-remark {
+  margin-bottom: 8px;
+  color: #f4c542;
+  font-size: 1rem;
+}
+
+/* Checkbox layout */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #2a3b2d;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.checkbox-group label {
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.checkbox-group input {
+  margin-right: 8px;
+  accent-color: #f4c542;
+}
+
+.parent-picture {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+#otherText {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  max-height: 50px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  resize: vertical;
+  margin-top: 27px;
+}
+
+#remarks {
+  width: 100%;
+  resize: vertical;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+
+.form-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 260px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+#remarks {
+  width: 100%;
+  resize: vertical;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  max-height: 50px;
+}
+
+.hidden {
+  display: none;
+}
+
+.file-label {
+  display: block;
+  background: #f4c542;
+  color: #1a1a1a;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+input[type="file"] {
+  display: none;
+}
+
+#filePreview {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#filePreview img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#remarks {
+  width: 100%;
+  resize: vertical;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #f4c542;
+  background-color: transparent;
+}
+
+.close:hover {
+  color: #ffda5f;
+}
+
+/* File Upload */
+.file-label {
+  display: block;
+  background: #f4c542;
+  color: #1a1a1a;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#filePreview {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#filePreview img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+
+.apply-loan {
+  background-color: #f4c542;
+  color: #1a1a1a;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.apply-loan:hover {
+  background-color: #ffda5f;
+  transform: scale(1.03);
+}
+
+
+.form {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.form h3 {
+  margin: 15px 0 10px;
+  font-size: 1.1rem;
+  color: #f4c542;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 5px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-row input,
+.form-row select {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.form-row select{
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  max-height: 45px;
+}
+
+
+.form-row input:focus,
+.form-row select:focus {
+  outline: 2px solid #f4c542;
+}
+
+
+.btn-update {
+  background-color: #f4c542;
+  color: #1a1a1a;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-update:hover {
+  background-color: #ffda5f;
+  transform: scale(1.03);
+}
+
+
+
+/* ---------- FORMS ---------- */
+.form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.btn {
+  display: inline-block;
+  background: #f4c542;
+  color: #1a1a1a;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ffda5f;
+}
+
+.btn.small {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.btn.danger {
+  background: #b0413e;
+  color: #fff;
+}
+
+.btn.danger:hover {
+  background: #d9534f;
+}
+
+/* ---------- TABLE ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- EDUCATION ---------- */
+.resources {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.card h3 {
+  color: #f4c542;
+  margin-bottom: 10px;
+}
+
+/* ---------- LOAN TRACKER ---------- */
+.tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.status {
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.pending { background: #f4c542; color: #1a1a1a; }
+.approved { background: #4caf50; }
+.paid { background: #2196f3; }
+.rejected { background: #b0413e; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  main {
+    padding: 20px;
+  }
+}

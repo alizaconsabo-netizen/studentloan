@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard | Loan Management System</title>
+  <link rel="stylesheet" href="student.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Student Portal</div>
+    <ul class="nav-links">
+        <li><a href="#" data-section="profile">Profile</a></li>
+        <li><a href="#" data-section="loan">Loan Management</a></li>
+        <li><a href="#" class="active" data-section="education">Financial Education</a></li>
+        <li><a href="index.html" class="logout">Logout</a></li>
+    </ul>
+  </nav>
+
+  <main>
+<!-- PROFILE -->
+<section id="profile" class="section">
+  <h2>Profile Management</h2>
+  <form class="form">
+    <h3>Personal Information</h3>
+    <div class="form-row">
+      <input type="text" placeholder="Last Name" required />
+      <input type="text" placeholder="First Name" required />
+      <input type="text" placeholder="Middle Name" />
+    </div>
+
+    <div class="form-row">
+      <input type="date" placeholder="Date of Birth" required />
+      <select id="sex" name="sex" title="Sex" required>
+        <option value="">Select Sex</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+      <input type="text" placeholder="Civil Status" />
+    </div>
+
+    <div class="form-row">
+      <input type="text" placeholder="Address (House No. & Street)" required />
+      <input type="text" placeholder="Town/City" required />
+      <input type="text" placeholder="Province" />
+    </div>
+
+    <h3>Academic Information</h3>
+    <div class="form-row">
+      <input type="text" placeholder="Student No." required />
+      <input type="text" placeholder="Course / Year Level" required />
+      <input type="text" placeholder="School Year" />
+    </div>
+
+    <h3>Family Information</h3>
+    <div class="form-row">
+      <input type="text" placeholder="Father’s Name" />
+      <input type="text" placeholder="Occupation" />
+      <input type="text" placeholder="Contact No." />
+    </div>
+    <div class="form-row">
+      <input type="text" placeholder="Mother’s Name" />
+      <input type="text" placeholder="Occupation" />
+      <input type="text" placeholder="Contact No." />
+    </div>
+    <div class="form-row">
+      <input type="text" placeholder="Guardian’s Name" />
+      <input type="text" placeholder="Occupation" />
+      <input type="text" placeholder="Contact No." />
+    </div>
+
+    <button type="submit" class="btn-update">Update Profile</button>
+  </form>
+</section>
+
+
+
+    <!-- LOAN MANAGEMENT -->
+    <section id="loan" class="section">
+    <div class="loan-header">
+        <h2>Loan Management</h2>
+        <button class="btn upload-btn" id="openModal">Apply Loan</button>
+    </div>
+
+    <div class="loan-list">
+        <h3>Existing Loans</h3>
+        <table>
+        <thead>
+            <tr>
+            <th>Lender</th>
+            <th>Amount</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>Landbank</td>
+            <td>₱20,000</td>
+            <td>06/24/2025</td>
+            <td>Pending</td>
+            <td>
+                <button class="btn small">View</button>
+                <button class="btn small danger">Cancel</button>
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="uploadModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="close" id="closeModal" aria-label="Close">&times;</button>
+
+        <h3 id="modalTitle">Apply for Student Loan</h3>
+
+        <form id="loanUploadForm" class="loan-upload-form" enctype="multipart/form-data">
+        
+        <div class="form-grid">
+            <div class="form-column">
+            <h4>Reason(s) for Application:</h4>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="reason" value="Delayed Remittance"> Delayed Remittance</label>
+                <label><input type="checkbox" name="reason" value="Delayed Salary"> Delayed Salary</label>
+                <label><input type="checkbox" name="reason" value="Lost Job"> Lost Job (Parents/Benefactor/Sponsor)</label>
+                <label><input type="checkbox" name="reason" value="Sickness/Death"> Sickness/Death (Parents/Benefactor/Sponsor)</label>
+                <label><input type="checkbox" name="reason" value="Others" id="otherCheckbox"> Others (Please indicate below)</label>
+            </div>
+            <textarea id="otherText" name="otherReason" placeholder="If others, please specify..." rows="3" class="hidden"></textarea>
+            </div>
+
+            <div class="form-column">
+                <h4>Requirements:</h4>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="requirement" value="ParentID"> Parent/Guardian’s Valid ID</label>
+                    <label><input type="checkbox" name="requirement" value="SchoolID"> School ID</label>
+                </div>
+
+                <div class="form-row parent-picture">
+                    <label for="fileInput" class="file-label">Upload Parent/Guardian Picture</label>
+                    <input type="file" id="fileInput" accept="image/*, .pdf" required />
+                </div>
+
+                <h4 class="h4-remark">Remarks:</h4>
+                <textarea id="remarks" name="remarks" placeholder="Enter any remarks or additional details..." rows="5"></textarea>
+            </div>
+        </div>
+
+        <div id="filePreview" class="file-preview" aria-live="polite"></div>
+
+        <!-- PROMISSORY NOTE -->
+        <h4>Promissory Note:</h4>
+        <p class="note-text">
+            I, the undersigned, promise to pay the amount indicated below as part of my student loan agreement with the university.
+        </p>
+
+        <div class="form-row">
+            <input type="number" placeholder="Loan Amount (₱)" required />
+            <input type="date" placeholder="Due Date of Loan" required />
+        </div>
+
+        <div class="form-row">
+            <input type="text" placeholder="Name of Student Applicant" required />
+        </div>
+
+        <div class="form-row">
+            <input type="text" placeholder="Name of Parent/Guardian" required />
+            <input type="text" placeholder="Contact No. of Parent/Guardian" required />
+        </div>
+
+        <div class="modal-actions">
+            <button type="submit" class="btn">Submit Application</button>
+            <button type="button" class="btn secondary" id="cancelModal">Cancel</button>
+        </div>
+        </form>
+    </div>
+    </div>
+
+    </section>
+
+
+    <!-- FINANCIAL EDUCATION -->
+    <section id="education" class="section active-section">
+      <h2>Financial Education</h2>
+      <div class="resources">
+        <div class="card">
+          <h3>Responsible Borrowing</h3>
+          <p>Understand how loans work and how to borrow smartly to avoid financial stress.</p>
+          
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <script>
+    // NAVIGATION SECTION
+    const navLinks = document.querySelectorAll(".nav-links a[data-section]");
+    const sections = document.querySelectorAll("main .section");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const targetId = link.getAttribute("data-section");
+
+        navLinks.forEach(l => l.classList.remove("active"));
+        sections.forEach(sec => sec.classList.remove("active-section"));
+
+        link.classList.add("active");
+        document.getElementById(targetId).classList.add("active-section");
+      });
+    });
+
+    // Modal Control
+  const modal = document.getElementById("uploadModal");
+  const openModal = document.getElementById("openModal");
+  const closeModal = document.getElementById("closeModal");
+
+  openModal.addEventListener("click", () => (modal.style.display = "block"));
+  closeModal.addEventListener("click", () => (modal.style.display = "none"));
+  window.addEventListener("click", e => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+
+  // File Preview
+  const fileInput = document.getElementById("fileInput");
+  const filePreview = document.getElementById("filePreview");
+
+  fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        if (file.type.startsWith("image/")) {
+          filePreview.innerHTML = `<img src="${e.target.result}" alt="Preview" />`;
+        } else {
+          filePreview.innerHTML = `<p>${file.name}</p>`;
+        }
+      };
+      reader.readAsDataURL(file);
+    } else {
+      filePreview.innerHTML = "";
+    }
+  });
+
+  // Form Submit
+  document
+    .getElementById("loanUploadForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Loan application submitted successfully!");
+      this.reset();
+      filePreview.innerHTML = "";
+      modal.style.display = "none";
+    });
+
+    // Show textarea only when "Others" is checked
+    const otherCheckbox = document.getElementById("otherCheckbox");
+    const otherText = document.getElementById("otherText");
+
+    otherCheckbox.addEventListener("change", function () {
+    if (this.checked) {
+        otherText.style.display = "block";
+    } else {
+        otherText.style.display = "none";
+        otherText.value = ""; 
+    }
+    });
+
+    
+  </script>
+</body>
+</html>

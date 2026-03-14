@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard | Student Loan System</title>
+  <link rel="stylesheet" href="admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <h2 class="logo">Admin Portal</h2>
+    <nav>
+      <a href="#" class="active">Dashboard</a>
+      <a href="#">Students</a>
+      <a href="#">Loans</a>
+      <a href="#" class="logout">Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Topbar -->
+    <header class="topbar">
+      <h1>Admin Dashboard</h1>
+      <div class="admin-info">
+        <span>Welcome, Admin</span>
+      </div>
+    </header>
+
+    <!-- Dashboard Overview -->
+    <section id="dashboard" class="section active">
+      <h2>System Overview</h2>
+      <div class="stats-grid">
+        <div class="card"><h3>Total Students</h3><p>1,024</p></div>
+        <div class="card"><h3>Total Loans</h3><p>₱2.4M</p></div>
+        <div class="card"><h3>Average Loan</h3><p>₱15,800</p></div>
+      </div>
+
+      <!-- Loan Analytics Inside Dashboard -->
+      <h2 class="h2-report">Loan Analytics</h2>
+      <div class="chart-grid">
+        <div class="chart-card"><canvas id="totalLoanChart"></canvas></div>
+        <div class="chart-card"><canvas id="gpaLoanChart"></canvas></div>
+      </div>
+
+      <!-- Report Generator Inside Dashboard -->
+      <h2 class="h2-report">Report Generator</h2>
+      <button id="openReportModal" class="btn">Generate Report</button>
+    </section>
+
+    <!-- Student Management -->
+    <section id="students" class="section">
+      <h2>Student Management</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Year</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2023-001</td>
+            <td>Juan Dela Cruz</td>
+            <td>BSIT</td>
+            <td>4th</td>
+            <td>
+              <button class="btn small">Edit</button>
+              <button class="btn danger small">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Loan Management -->
+    <section id="loans" class="section">
+      <h2>Loan Management</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Loan ID</th>
+            <th>Student</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>L-102</td>
+            <td>Maria Santos</td>
+            <td>₱25,000</td>
+            <td>Approved</td>
+            <td><button class="btn small">View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Report Modal -->
+  <div id="reportModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Generate Report</h3>
+      <form>
+        <label for="reportType">Select Report Type:</label>
+        <select id="reportType" name="reportType">
+          <option>Loan Summary</option>
+          <option>Student Performance</option>
+          <option>Financial Overview</option>
+        </select>
+
+        <label for="remarks">Remarks:</label>
+        <textarea id="remarks" placeholder="Add notes or remarks..."></textarea>
+
+        <button type="submit" class="btn">Export to Excel</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Sidebar navigation
+    const links = document.querySelectorAll(".sidebar nav a");
+    const sections = document.querySelectorAll(".section");
+
+    links.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (link.textContent.trim().toLowerCase() === "logout") return;
+
+        links.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+
+        sections.forEach((sec) => sec.classList.remove("active"));
+        const id = link.textContent.trim().toLowerCase();
+        const target = document.getElementById(id);
+        if (target) target.classList.add("active");
+      });
+    });
+
+    // Modal Logic
+    const modal = document.getElementById("reportModal");
+    const openBtn = document.getElementById("openReportModal");
+    const closeBtn = document.querySelector(".close");
+
+    openBtn.onclick = () => (modal.style.display = "block");
+    closeBtn.onclick = () => (modal.style.display = "none");
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+
+    // Chart.js Analytics
+    const totalLoanChart = new Chart(document.getElementById("totalLoanChart"), {
+      type: "bar",
+      data: {
+        labels: ["Paid", "Unpaid"],
+        datasets: [{
+          label: "Loans (₱)",
+          data: [1800000, 600000],
+          backgroundColor: ["#4caf50", "#f4c542"]
+        }]
+      },
+    });
+
+    const gpaLoanChart = new Chart(document.getElementById("gpaLoanChart"), {
+      type: "line",
+      data: {
+        labels: ["1.0", "1.5", "2.0", "2.5", "3.0"],
+        datasets: [{
+          label: "Average Loan (₱)",
+          data: [20000, 18000, 15000, 12000, 10000],
+          borderColor: "#f4c542",
+          fill: false,
+          tension: 0.3
+        }]
+      },
+    });
+
+  </script>
+
+</body>
+</html>

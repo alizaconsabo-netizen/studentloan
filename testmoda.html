@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Loan Form View</title>
+  <link rel="stylesheet" href="modalstyle.css">
+</head>
+<body>
+
+  <button id="openLoanModal">Show Form</button>
+
+ <!-- Loan View Modal Background -->
+<div id="loanViewModal" class="loan-modal">
+  <div class="loan-modal-content">
+
+    <span id="closeLoanViewModal" class="loan-close btn-close-loan">&times;</span>
+    
+    <div class="loan-document">
+      <h2 class="header-loan loan-text-center">STUDENT LOAN</h2>
+      <p class="p-loan-instruction loan-subtitle">PLEASE READ THE INSTRUCTIONS AT THE BACK BEFORE FILLING UP THE FORM.</p>
+
+      <div class="loan-section section-loan loan-form-header">
+        <p class="p-loan-checkbox">
+          <strong class="strong-loan">[✓] Examination</strong> &nbsp;&nbsp;
+          <span class="span-loan">[ ] Enrollment</span> &nbsp;&nbsp;
+          <span class="span-loan">[ ] Continuing</span> &nbsp;&nbsp;
+          <span class="span-loan">[ ] Returnee</span>
+        </p>
+      </div>
+
+      <div class="loan-row row-loan">
+        <div class="div-loan"><strong class="strong-loan">Last Name:</strong> Lagunzad</div>
+        <div class="div-loan"><strong class="strong-loan">First Name:</strong> Jessar</div>
+        <div class="div-loan"><strong class="strong-loan">Middle Name:</strong> Jachilyn</div>
+      </div>
+
+      <div class="loan-row row-loan">
+        <div class="div-loan"><strong class="strong-loan">Date of Birth:</strong> Aug 8, 2002</div>
+        <div class="div-loan"><strong class="strong-loan">Sex:</strong> Male</div>
+        <div class="div-loan"><strong class="strong-loan">Civil Status:</strong> Single</div>
+      </div>
+
+      <div class="loan-row row-loan loan-two-cols loan-nowrap">
+        <div class="div-loan"><strong class="strong-loan">Student No.:</strong> 04-7324-043459</div>
+        <div class="div-loan"><strong class="strong-loan">Course-Grade/Year Level:</strong> BSIT 1-2, 1st Year</div>
+      </div>
+
+      <div class="loan-row row-loan">
+        <div class="div-loan"><strong class="strong-loan">Father’s Name:</strong> Cesar Lagunzad</div>
+        <div class="div-loan"><strong class="strong-loan">Occupation:</strong> Construction</div>
+      </div>
+
+      <div class="loan-row row-loan">
+        <div class="div-loan"><strong class="strong-loan">Mother’s Name:</strong> Jachilyn Lagunzad</div>
+        <div class="div-loan"><strong class="strong-loan">Occupation:</strong> None</div>
+      </div>
+
+      <div class="loan-row row-loan">
+        <div class="div-loan"><strong class="strong-loan">Guardian’s Name:</strong> Cesar Lagunzad</div>
+        <div class="div-loan"><strong class="strong-loan">Occupation:</strong> Fisherman</div>
+      </div>
+
+      <div class="loan-section section-loan">
+        <h3 class="header-loan-step">STEP 1 - ASSESSMENT</h3>
+        <div class="loan-row row-loan">
+          <div class="div-loan"><strong class="strong-loan">Total:</strong> ₱4,446.40</div>
+          <div class="div-loan"><strong class="strong-loan">Remarks:</strong> HL 50%</div>
+        </div>
+      </div>
+
+      <div class="loan-section section-loan">
+        <h3 class="header-loan-step">REASON/S FOR APPLICATION</h3>
+        <p class="p-loan-checkbox">☑ Delayed Remittance &nbsp;&nbsp; ☐ Delayed Salary &nbsp;&nbsp; ☐ Lost of Job</p>
+        <p class="p-loan-checkbox">☐ Sickness/Death &nbsp;&nbsp; ☐ Others (Please indicate)</p>
+        <p class="p-loan-requirements"><strong class="strong-loan">Requirements:</strong> [✓] Parent/Guardian’s Valid ID &nbsp;&nbsp; [✓] School ID</p>
+      </div>
+
+      <div class="loan-section section-loan">
+        <h3 class="header-loan-step">PROMISSORY NOTE</h3>
+        <p class="p-loan-note">I, <strong class="strong-loan">Jessar Lagunzad</strong>, student/parent/guardian of PHINMA University of Iloilo, promise to pay the amount of ₱2,214 on or before <strong class="strong-loan">March 8, 2024</strong>.</p>
+        <p class="p-loan-guardian"><strong class="strong-loan">Guardian:</strong> Jachilyn Lagunzad</p>
+        <p class="p-loan-contact"><strong class="strong-loan">Contact No:</strong> 09483615820</p>
+      </div>
+
+      <div class="loan-section section-loan">
+        <h3 class="header-loan-step">APPROVAL</h3>
+        <p class="p-loan-approval"><strong class="strong-loan">Approved by:</strong> Ms. Zarah T. Cagape</p>
+        <p class="p-loan-approval"><strong class="strong-loan">Date:</strong> 2/24/24</p>
+        <p class="p-loan-approval"><strong class="strong-loan">Email:</strong> jesar.lagunzad.ui@phinmaed.com</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    <script>
+     const loanViewModal = document.getElementById('loanViewModal');
+    const openLoanButtons = document.querySelectorAll('#openLoanModal');
+    const closeLoanViewModal = document.getElementById('closeLoanViewModal');
+
+    openLoanButtons.forEach(btn => {
+      btn.addEventListener('click', () => loanViewModal.style.display = 'flex');
+    });
+
+    closeLoanViewModal.addEventListener('click', () => loanViewModal.style.display = 'none');
+    window.addEventListener('click', e => {
+      if (e.target === loanViewModal) loanViewModal.style.display = 'none';
+    });
+    </script>
+
+
+</body>
+</html>
